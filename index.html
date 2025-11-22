@@ -8,382 +8,206 @@
   <meta name="theme-color" content="#00eaff" />
   <link rel="icon" href="assets/image/logo.png" />
 
-  <style>
-    /* Reset & base */
-    :root{
-      --bg:#05060a;
-      --panel:#071021;
-      --accent1:#00eaff;
-      --accent2:#ff00c8;
-      --muted:rgba(255,255,255,0.72);
-      --muted-2:rgba(255,255,255,0.55);
-      --glass:rgba(255,255,255,0.04);
-      --card:rgba(255,255,255,0.03);
-      --glass-strong:rgba(255,255,255,0.06);
-      --shadow:0 10px 30px rgba(0,0,0,0.6);
-      --radius:14px;
-      --max:1200px;
-      --gap:20px;
-      font-size:16px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg,var(--bg), #071025);
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    .container{max-width:var(--max);margin:0 auto;padding:36px}
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
-    .brand-row{display:flex;align-items:center;gap:14px}
-    .brand-row img{width:56px;height:56px;border-radius:12px;object-fit:cover;box-shadow:0 6px 24px rgba(0,230,255,0.08)}
-    .brand-title{font-size:20px;font-weight:700;color:var(--accent1)}
-    nav{display:flex;gap:14px;align-items:center}
-    nav a{color:var(--muted-2);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:14px}
-    nav a:hover{color:#fff;background:rgba(255,255,255,0.02)}
-
-    /* Layout */
-    .layout{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
-    @media(max-width:980px){.layout{grid-template-columns:1fr}}
-    
-    /* Left column — main content */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.01));border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow)}
-    .hero-header{display:flex;gap:18px;align-items:center}
-    .feature-graphic{width:220px;height:140px;border-radius:12px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,255,255,0.04)}
-    .feature-graphic img{width:100%;height:100%;object-fit:cover;display:block}
-    .meta{
-      display:flex;flex-direction:column;gap:8px;
-      justify-content:center;min-width:0
-    }
-    .title{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent}
-    .sub{color:var(--muted);font-size:14px}
-    .meta-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
-    .rating{display:inline-flex;align-items:center;background:linear-gradient(90deg, rgba(0,234,255,0.06), rgba(255,0,200,0.04));padding:6px 10px;border-radius:10px;font-weight:700;color:var(--accent1)}
-    .meta-cta{margin-top:12px;display:flex;gap:10px;align-items:center}
-
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#071021;border:none;box-shadow:0 10px 30px rgba(0,230,255,0.12)}
-    .btn.secondary{background:rgba(255,255,255,0.02)}
-    .btn.icon{padding:8px;border-radius:10px}
-
-    /* Media gallery */
-    .media-strip{display:flex;gap:12px;align-items:center;margin-top:18px;overflow:auto;padding-bottom:8px}
-   .media-card{
-  min-width:260px;
-  height:480px;
-  border-radius:16px;
-  overflow:hidden;
-  background:#000;
-  border:1px solid rgba(255,255,255,0.05);
-  box-shadow:0 12px 32px rgba(0,0,0,0.7);
-}
-
-.thumbs{display:flex;gap:10px;margin-top:12px}
-    .thumbs img{
-  width:120px;
-  height:220px;
-  object-fit:cover;
-  border-radius:12px;
-  cursor:pointer;
-  border:1px solid rgba(255,255,255,0.05);
-  box-shadow:0 8px 24px rgba(0,0,0,0.65);
-  transition:0.2s;
-}
-.thumbs img.active{
-  outline:2px solid rgba(0,234,255,0.20);
-  transform:translateY(-8px) scale(1.04);
-  box-shadow:0 14px 30px rgba(0,234,255,0.28);
-}
-
-    /* Description */
-    .description{margin-top:20px}
-    .description .body{color:var(--muted);line-height:1.6;padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02)}
-    .readmore{display:inline-block;margin-top:12px;color:var(--accent1);cursor:pointer;font-weight:700}
-
-    /* Features grid */
-    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .feature-tile{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);display:flex;gap:12px;align-items:center}
-    .feature-tile img{width:44px;height:44px;object-fit:contain}
-
-    @media(max-width:900px){.features-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.features-grid{grid-template-columns:1fr}}
-
-    /* Right column — side panel */
-    .side{display:flex;flex-direction:column;gap:16px}
-    .side .card{padding:14px}
-    .leaderboard{display:flex;flex-direction:column;gap:12px}
-    .leader-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02)}
-    .leader-rank{width:54px;height:54px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
-    .leader-primary{color:var(--accent1)}
-    .leader-meta{flex:1}
-    .leader-score{font-weight:800;font-size:18px}
-    .muted{color:var(--muted);font-size:13px}
-
-    /* Downloads */
-    .download-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    .download-tile{display:flex;gap:12px;padding:12px;border-radius:10px;align-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02)}
-    .download-tile img{width:46px;height:46px;object-fit:contain}
-
-    footer{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
-    @media(max-width:980px){nav{display:none}}
-  </style>
+  <!-- PlayFab Client SDK -->
+  <script src="https://download.playfab.com/PlayFabClientApi.js" defer></script>
 </head>
 <body>
-  <div class="container">
+  <div class="wrapper">
 
-    <!-- Header -->
-    <header>
-      <div class="brand-row">
-        <img src="assets/image/logo.png" alt="logo">
-        <div>
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/image/logo.png" alt="angryBolly logo" class="brand-icon">
+        <div class="brand-text">
           <div class="brand-title">angryBolly</div>
-          <div class="muted" style="font-size:13px">CoreBit Studio • Meme Runner</div>
+          <div class="brand-sub">CoreBit Studio • Action Game</div>
         </div>
       </div>
 
-      <nav>
-        <a href="#description">Description</a>
-        <a href="#leaderboard">Leaderboard</a>
+      <nav class="topnav">
+        <a href="#description">About</a>
         <a href="#features">Features</a>
-        <a href="#downloads">Download</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#downloads">Get The Game</a>
       </nav>
     </header>
 
-    <div class="layout">
+    <!-- MAIN LAYOUT -->
+    <main class="container">
 
-      <!-- Left column -->
-      <main>
-        <section class="card">
-          <div class="hero-header">
-            <div class="feature-graphic">
-              <!-- Using uploaded feature image file path -->
-              <img src="/assets/image/feture.png" alt="feature graphic">
-            </div>
+      <!-- LEFT COLUMN -->
+      <section class="main-col">
 
-            <div class="meta">
-              <div class="title">angryBolly</div>
-              <div class="sub">Bollywood-styled endless runner — power-ups, wormholes, bosses, and meme-style chaos.</div>
+        <!-- FEATURE GRAPHIC + APP META -->
+        <article class="app-hero card">
+
+          <div class="feature-graphic">
+            <!-- Your generated feature graphic -->
+            <img src="/assets/image/feture.png" alt="Feature Graphic">
+          </div>
+
+          <div class="app-meta">
+            <img src="assets/image/logo.png" alt="icon" class="app-icon">
+
+            <div class="meta-text">
+              <h1 class="app-title">angryBolly</h1>
+              <div class="app-sub">Bollywood-style endless runner filled with memes, bosses, wormholes & chaos.</div>
 
               <div class="meta-row">
-                <div class="rating">4.7 ★</div>
-                <div class="muted">12K reviews</div>
-                <div class="muted">v1.0.3</div>
+                <div class="rating-pill">4.7 ★</div>
+                <div class="meta-muted">12K reviews</div>
+                <div class="meta-muted">•</div>
+                <div class="meta-muted">1M+ downloads</div>
               </div>
 
-              <div class="meta-cta">
-                <button class="btn primary" onclick="onPlay()">Play Now</button>
-                <a class="btn secondary" href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing" download>Download APK</a>
-                <a class="btn secondary" href="https://drive.google.com/file/d/1ThhHmWLPD1Rta6ln7rQukR0LTBQ6HEKg/view?usp=sharing" download>Download Windows</a>
+              <div class="cta-row">
+                <a id="playNow" class="btn primary" href="assets/instantplay/angrybolly.html">Play</a>
+                <a class="btn ghost" href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing">APK</a>
+                <a class="btn ghost" href="https://drive.google.com/file/d/1ThhHmWLPD1Rta6ln7rQukR0LTBQ6HEKg/view?usp=sharing">Windows</a>
               </div>
             </div>
           </div>
+        </article>
 
-          <!-- Media gallery -->
-          <div class="media-strip" aria-hidden="false">
-            <div class="media-card" id="videoCard">
-              <iframe id="ytPlayer" src="https://www.youtube.com/embed/VIDEO_ID_HERE?rel=0" style="width:100%;height:100%;border:0" allowfullscreen></iframe>
+        <!-- MEDIA: Screenshots + Video -->
+        <article class="media card">
+
+          <!-- Horizontal Screenshot Strip -->
+          <div class="screens-row landscape">
+            <img class="shot" src="assets/screens/s1.jpg" alt="">
+            <img class="shot" src="assets/screens/s2.jpg" alt="">
+            <img class="shot" src="assets/screens/s3.jpg" alt="">
+            <img class="shot" src="assets/screens/s4.jpg" alt="">
+          </div>
+
+          <div class="video-block">
+            <iframe src="https://www.youtube.com/embed/_mCgWfSpLzw" allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <!-- DESCRIPTION -->
+        <article id="description" class="card description-card">
+          <h2>About This Game</h2>
+
+          <p class="lead">
+            angryBolly is a high-speed meme-packed Bollywood runner where every second is chaos: wormholes, traps, bosses, and power-ups.
+          </p>
+
+          <div class="text-muted">
+            Speed boosts, shields, magnets, blackholes, and meme obstacles create never-ending fun.
+          </div>
+
+          <div id="longDesc" class="text-muted long" hidden>
+            <p><strong>Controls:</strong> Tap to jump • Double tap to double-jump • Swipe down to slide.</p>
+            <p><strong>Powered By:</strong> CoreBit Studio • Godot Engine.</p>
+            <p><strong>Patch:</strong> Performance increased • Bugs fixed • New boss stage.</p>
+          </div>
+
+          <button id="toggleDesc" class="link-btn">Read more ▾</button>
+        </article>
+
+        <!-- FEATURES -->
+        <article id="features" class="card">
+          <h3>Key Features</h3>
+
+          <div class="features-grid">
+            <div class="feature">
+              <img src="assets/image/magnet.png">
+              <div class="f-text">
+                <strong>Magnet Power</strong>
+                <div class="muted small">Collect coins automatically</div>
+              </div>
             </div>
 
-           <div class="media-card" id="screenshotMain">
-  <img id="mainShot" src="assets/screens/s1.png"
-       style="width:100%;height:100%;object-fit:cover;">
+            <div class="feature">
+              <img src="assets/image/pause-button.png">
+              <div class="f-text">
+                <strong>Time Trials</strong>
+                <div class="muted small">Daily speed challenges</div>
+              </div>
+            </div>
+
+            <div class="feature">
+              <img src="assets/image/medal.png">
+              <div class="f-text">
+                <strong>Global Leaderboards</strong>
+                <div class="muted small">Compete worldwide</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="side-col">
+
+        <!-- LEADERBOARD -->
+        <div id="leaderboard" class="card leaderboard-card">
+  <h4 class="section-title">Leaderboard — Top Players</h4>
+
+  <!-- 1st -->
+  <div class="leader professional">
+    <div class="rank-badge gold">1</div>
+    <div class="info">
+      <div id="p1name" class="name">PlayerOne</div>
+      <div class="muted small">Top Performer</div>
+    </div>
+    <div id="p1score" class="score">0</div>
+  </div>
+
+  <!-- 2nd -->
+  <div class="leader professional">
+    <div class="rank-badge silver">2</div>
+    <div class="info">
+      <div id="p2name" class="name">ShadowBoss</div>
+      <div class="muted small">Competitive Runner</div>
+    </div>
+    <div id="p2score" class="score">0</div>
+  </div>
+
+  <!-- 3rd -->
+  <div class="leader professional">
+    <div class="rank-badge bronze">3</div>
+    <div class="info">
+      <div id="p3name" class="name">NinjaRun</div>
+      <div class="muted small">Fast & Skilled</div>
+    </div>
+    <div id="p3score" class="score">0</div>
+  </div>
 </div>
 
-          </div>
 
-          <div class="thumbs">
-            <img src="assets/screens/s1.jpg" class="thumb active" data-src="assets/screens/s1.jpg" alt="s1">
-            <img src="assets/screens/s2.jpg" class="thumb" data-src="assets/screens/s2.jpg" alt="s2">
-            <img src="assets/screens/s3.jpg" class="thumb" data-src="assets/screens/s3.jpg" alt="s3">
-            <img src="assets/screens/s4.jpg" class="thumb" data-src="assets/screens/s4.jpg" alt="s4">
-          </div>
+        <!-- DOWNLOADS -->
+        <div id="downloads" class="card downloads-card">
+          <h4>Get The Game</h4>
 
-          <!-- Description -->
-          <div class="description">
-            <h3 style="margin-bottom:8px;color:var(--accent1)">About this game</h3>
-            <div class="body" id="descBody">
-              <p>
-                angryBolly is a darkly humorous, fast-paced endless runner inspired by Bollywood energy and internet memes.
-                Race through absurd obstacle courses, collect power-ups, and face explosive boss sequences.
-              </p>
-              <p>
-                Mechanics: magnet pickups, speed boosts, temporary shields, wormholes that teleport you forward (or backwards),
-                blackhole traps, and stage-based mini-boss battles that change gameplay tempo.
-              </p>
-              <p style="margin-top:6px;color:var(--muted)">Tap “Read more” for controls, credits and patch notes.</p>
-            </div>
-
-            <div class="readmore" id="readMoreToggle">Read more ▾</div>
-            <div id="longDesc" style="display:none;margin-top:12px;color:var(--muted);line-height:1.6">
-              <strong>Controls:</strong> Tap to jump, double-tap to double-jump, swipe down to slide.  
-              <br><br>
-              <strong>Credits:</strong> CoreBit Studio — Design & Development. Powered by Godot Engine.  
-              <br><br>
-              <strong>Patch Notes (v1.0.3):</strong> Improved performance, fixed magnet pickup issue, added new boss stage.
-            </div>
-          </div>
-
-          <!-- Features -->
-          <div style="margin-top:18px">
-            <h4 style="color:var(--accent1);margin-bottom:12px">Key Features</h4>
-            <div class="features-grid">
-              <div class="feature-tile"><img src="assets/image/magnet.png" alt=""><div><strong>Magnet Power</strong><div class="muted">Attract coins & boosts</div></div></div>
-              <div class="feature-tile"><img src="assets/image/pause-button.png" alt=""><div><strong>Time Trials</strong><div class="muted">Beat daily challenges</div></div></div>
-              <div class="feature-tile"><img src="assets/image/medal.png" alt=""><div><strong>Global Leaderboards</strong><div class="muted">Compete for top spots</div></div></div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <!-- Right column (side) -->
-      <aside class="side">
-        <div class="card">
-          <h4 style="margin-bottom:10px;color:var(--accent1)">Leaderboard — Top Players</h4>
-          <div class="leaderboard" id="leaderboard">
-            <div class="leader-item">
-              <div class="leader-rank" style="background:linear-gradient(90deg, rgba(0,234,255,0.06), rgba(255,0,200,0.06))">
-                <img src="assets/image/medal.png" alt="1" style="width:44px;height:44px">
-              </div>
-              <div class="leader-meta">
-                <div id="p1name" style="font-weight:800;color:var(--accent1)">PlayerOne</div>
-                <div class="muted">Level 42 • 3h playtime</div>
-              </div>
-              <div class="leader-score" id="p1score">0</div>
-            </div>
-
-            <div class="leader-item">
-              <div class="leader-rank" style="background:rgba(255,255,255,0.02)">
-                <img src="assets/image/medal (1).png" alt="2" style="width:40px;height:40px">
-              </div>
-              <div class="leader-meta">
-                <div id="p2name" style="font-weight:700;color:#cfcfcf">ShadowBoss</div>
-                <div class="muted">Level 39 • 1d playtime</div>
-              </div>
-              <div class="leader-score" id="p2score">0</div>
-            </div>
-
-            <div class="leader-item">
-              <div class="leader-rank" style="background:linear-gradient(90deg, rgba(255,0,200,0.04), rgba(0,234,255,0.02))">
-                <img src="assets/image/medal (2).png" alt="3" style="width:40px;height:40px">
-              </div>
-              <div class="leader-meta">
-                <div id="p3name" style="font-weight:700;color:var(--accent2)">NinjaRun</div>
-                <div class="muted">Level 35 • 6h playtime</div>
-              </div>
-              <div class="leader-score" id="p3score">0</div>
-            </div>
+          <div class="download-list">
+            <a class="download-item" href="assets/instantplay/angrybolly.html">Play Web</a>
+            <a class="download-item" href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing">APK</a>
+            <a class="download-item" href="https://drive.google.com/file/d/1ThhHmWLPD1Rta6ln7rQukR0LTBQ6HEKg/view?usp=sharing">Windows</a>
           </div>
         </div>
 
-        <!-- Downloads -->
-        <div class="card">
-          <h4 style="color:var(--accent1);margin-bottom:10px">Get the Game</h4>
-          <div class="download-tiles">
-            <div class="download-tile">
-              <img src="assets/image/logo.png" alt="">
-              <div>
-                <div style="font-weight:800">Web Build</div>
-                <div class="muted" style="font-size:13px">Instant play in browser</div>
-              </div>
-            </div>
-
-            <div class="download-tile">
-              <img src="assets/image/play-button.png" alt="">
-              <div>
-                <div style="font-weight:800">Android APK</div>
-                <div class="muted" style="font-size:13px">Direct download</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px;display:flex;gap:8px">
-            <a class="btn primary" href="#">Play Now</a>
-            <a class="btn secondary" href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing" download>Download APK</a>
-          </div>
+        <div class="card quick card-stats">
+          <div class="muted small">Version</div>
+          <div class="version">v1.0.3</div>
+          <div class="muted small">Updated: 21 Nov 2025</div>
         </div>
 
-        <!-- Quick stats -->
-        <div class="card" style="text-align:center">
-          <div style="font-size:12px;color:var(--muted)">Current Version</div>
-          <div style="font-weight:800;font-size:18px;margin-top:6px"><v3 class="0 0"></v3></div>
-          <div style="margin-top:8px;color:var(--muted)">Updated: 21 Nov 2025</div>
-        </div>
       </aside>
-    </div>
+    </main>
 
-    <footer>
+    <footer class="footer">
       <div>© CoreBit Studio — angryBolly</div>
-      <div class="muted">Built with Godot • Assets & icons loaded locally</div>
+      <div class="muted small">Built with Godot Engine</div>
     </footer>
+
   </div>
-  <script src="https://download.playfab.com/PlayFabClientApi.js"></script>
 
-  <script>
-// PlayFab configuration
-const PLAYFAB_TITLE_ID = "16EA52"; // <-- Replace this
-const LEADERBOARD_STAT = "HighScore";     // <-- Your PlayFab Statistic name
-
-function loginPlayFab() {
-    PlayFab.settings.titleId = PLAYFAB_TITLE_ID;
-
-    const loginRequest = {
-        TitleId: PLAYFAB_TITLE_ID,
-        CustomId: "WebUser_" + Math.floor(Math.random()*999999),
-        CreateAccount: true
-    };
-
-    PlayFabClientSDK.LoginWithCustomID(loginRequest, function (result, error) {
-        if (result) {
-            console.log("PlayFab Login Success");
-            fetchLeaderboard();
-        } else {
-            console.error("PlayFab Login Failed:", error);
-        }
-    });
-}
-
-function fetchLeaderboard() {
-    const request = {
-        StatisticName: LEADERBOARD_STAT,
-        StartPosition: 0,
-        MaxResultsCount: 3
-    };
-
-    PlayFabClientSDK.GetLeaderboard(request, function (result, error) {
-        if (result) {
-            console.log("Leaderboard:", result);
-            updateLeaderboardUI(result.data.Leaderboard);
-        } else {
-            console.error("Leaderboard Fetch Error:", error);
-        }
-    });
-}
-
-function updateLeaderboardUI(list) {
-    if (!list || list.length === 0) return;
-
-    const slots = [
-        { name: "p1name", score: "p1score" },
-        { name: "p2name", score: "p2score" },
-        { name: "p3name", score: "p3score" }
-    ];
-
-    list.forEach((entry, idx) => {
-        if (!slots[idx]) return;
-
-        document.getElementById(slots[idx].name).innerText = entry.DisplayName || entry.PlayFabId;
-        document.getElementById(slots[idx].score).innerText = entry.StatValue || 0;
-    });
-}
-
-// Auto run on page load
-document.addEventListener("DOMContentLoaded", loginPlayFab);
-</script>
-
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,380 @@
+/* ============================================================
+   AngryBolly — Play Store Styled UI (Modern 2025)
+   ============================================================ */
+
+/* ---------- Colors & Theme ---------- */
+:root {
+    --bg: #06070a;
+    --panel: #0b1020;
+    --accent1: #00eaff;
+    --accent2: #ff00c8;
+    --text: #ffffff;
+    --muted: rgba(255,255,255,0.70);
+    --muted2: rgba(255,255,255,0.45);
+    --card: rgba(255,255,255,0.03);
+    --glass: rgba(255,255,255,0.05);
+    --radius: 14px;
+    --shadow: 0 8px 28px rgba(0,0,0,0.6);
+    --max: 1300px;
+}
+
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg), #071025);
+    color: var(--text);
+    line-height: 1.5;
+}
+img {
+    display: block;
+}
+
+/* ---------- Layout Wrappers ---------- */
+.wrapper {
+    max-width: var(--max);
+    margin: auto;
+    padding: 20px;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 26px;
+}
+@media(max-width:1100px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- HEADER ---------- */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.brand-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+}
+.brand-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent1);
+}
+.brand-sub {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.topnav a {
+    color: var(--muted2);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.topnav a:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+}
+@media(max-width:850px) {
+    .topnav { display: none; }
+}
+
+/* ---------- Cards ---------- */
+.card {
+    padding: 18px;
+    border-radius: var(--radius);
+    background: var(--card);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: var(--shadow);
+}
+
+/* ---------- FEATURE GRAPHIC ---------- */
+.feature-graphic img {
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* ---------- App Meta ---------- */
+.app-meta {
+    display: flex;
+    gap: 18px;
+}
+.app-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+}
+.meta-text {
+    flex: 1;
+}
+.app-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.app-sub {
+    font-size: 14px;
+    color: var(--muted);
+}
+.meta-row {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.rating-pill {
+    background: rgba(0,234,255,0.12);
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: var(--accent1);
+}
+.meta-muted { color: var(--muted); }
+
+/* ---------- Buttons ---------- */
+.btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+.primary {
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #000;
+    border: none;
+}
+.ghost {
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+}
+.cta-row {
+    margin-top: 14px;
+    display: flex;
+    gap: 12px;
+}
+
+/* ---------- MEDIA SECTION ---------- */
+.media {
+    margin-top: 16px;
+}
+.screens-row {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+
+/* LANDSCAPE SCREENSHOTS (FIXED) */
+.screens-row.landscape .shot {
+    width: 260px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #000;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+}
+
+.video-block {
+    margin-top: 20px;
+}
+.video-block iframe {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    border: none;
+    object-fit: cover;
+}
+
+/* ---------- DESCRIPTION ---------- */
+.description-card h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--accent1);
+}
+.lead {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.text-muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+.long {
+    margin-top: 10px;
+}
+.link-btn {
+    margin-top: 12px;
+    color: var(--accent1);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* ---------- FEATURES GRID ---------- */
+.features-grid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+@media(max-width:900px) {
+    .features-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:600px) {
+    .features-grid { grid-template-columns: 1fr; }
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.03);
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.feature img {
+    width: 42px;
+    height: 42px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.side-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.leaderboard-card h4 {
+    margin-bottom: 12px;
+    color: var(--accent1);
+}
+.leader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+}
+.rank {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent1);
+}
+.name { font-weight: 700; }
+.score { font-weight: 800; font-size: 18px; }
+
+/* ---------- DOWNLOADS ---------- */
+.download-item {
+    display: block;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    background: rgba(255,255,255,0.04);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 13px;
+}
+@media(max-width:700px) {
+    .footer { flex-direction: column; gap: 10px; }
+}
+
+/* ========== Professional Leaderboard ========== */
+
+.leaderboard-card h4 {
+    color: var(--accent1);
+    margin-bottom: 14px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.leader.professional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 12px;
+    transition: 0.25s ease;
+}
+
+.leader.professional:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+}
+
+/* Rank Badges */
+.rank-badge {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.rank-badge.gold {
+    background: linear-gradient(135deg, #ffe66b, #ffcb2f);
+}
+
+.rank-badge.silver {
+    background: linear-gradient(135deg, #d9e0ea, #bfc7d2);
+}
+
+.rank-badge.bronze {
+    background: linear-gradient(135deg, #ffb07c, #e08646);
+}
+
+.info .name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+}
+
+.score {
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--accent1);
+    min-width: 50px;
+    text-align: right;
+}
+
