@@ -362,7 +362,7 @@ if (spriteContainer && spriteImage) {
    DYNAMIC STATS & REVIEW SYSTEM
    ======================================== */
 // API Configuration
-const API_BASE = './api/'; // Adjust if needed
+const API_BASE = 'https://angrybolly.page.gd/api/'; // Adjust if needed
 let currentReviewPage = 1;
 let selectedRating = 0;
 // Fetch and Update Stats
