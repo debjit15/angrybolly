@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>angryBolly — The Chaotic Bollywood Runner</title>
+  <meta name="description"
+    content="angryBolly — Meme-world endless runner with power-ups, bosses and Bollywood-style chaos." />
+  <meta name="theme-color" content="#00eaff" />
+  <link rel="icon" href="assets/image/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- PlayFab Client SDK -->
+  <script src="https://download.playfab.com/PlayFabClientApi.js" defer></script>
+</head>
+
+<body>
+
+  <!-- BACKGROUND ELEMENTS -->
+  <div class="bg-glow top-left"></div>
+  <div class="bg-glow bottom-right"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar glass">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img src="assets/image/logo.png" alt="angryBolly Logo" class="nav-logo">
+        <span class="nav-title">angry<span class="highlight">Bolly</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#media">Media</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#download" class="btn-nav">Play Now</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content fade-in-up">
+        <div class="badge">v1.0.3 Live Now</div>
+        <h1 class="hero-title">Run. Dodge. <br><span class="gradient-text">Create Chaos.</span></h1>
+        <p class="hero-desc">
+          Dive into the most chaotic Bollywood-style endless runner.
+          Wormholes, flying chappals, and meme bosses await.
+        </p>
+
+        <div class="hero-cta">
+          <a href="assets/instantplay/angrybolly.html" class="btn primary glow-effect">
+            <span class="btn-content">Play Now <span class="arrow">→</span></span>
+          </a>
+          <a href="#media" class="btn secondary">Watch Trailer</a>
+
+          <!-- Champion Badge -->
+          <div id="champion-badge" class="champion-badge hidden">
+            <span class="crown">👑</span>
+            <div class="champ-info">
+              <span class="champ-label">Current Champion</span>
+              <span id="champ-name" class="champ-name">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">1M+</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <span class="stat-num">4.7★</span>
+            <span class="stat-label">Rating</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <span class="stat-num">12K</span>
+            <span class="stat-label">Reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-in-right">
+        <div class="visual-circle"></div>
+        <img src="assets/image/hero_soft.png" alt="Angry Bolly Character" class="hero-img floating">
+
+        <!-- Floating Elements -->
+        <div class="float-card card-1 glass">
+          <img src="assets/image/magnet.png" alt="Magnet">
+          <span>Magnet ON</span>
+        </div>
+        <div class="float-card card-2 glass">
+          <img src="assets/image/medal.png" alt="Medal">
+          <span>Top #1</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="section features">
+    <div class="container">
+      <div class="section-header center">
+        <h2 class="section-title">Game <span class="highlight">Features</span></h2>
+        <p class="section-subtitle">Why players can't stop running</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card glass hover-lift">
+          <div class="icon-box">
+            <img src="assets/image/magnet.png" alt="Powerups">
+          </div>
+          <h3>Insane Powerups</h3>
+          <p>Magnets, Shields, and Blackholes. Collect them all to survive the chaos.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card glass hover-lift">
+          <div class="icon-box">
+            <img src="assets/image/pause-button.png" alt="Time Trials">
+          </div>
+          <h3>Time Trials</h3>
+          <p>Race against the clock in daily speed challenges. Be the fastest.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card glass hover-lift">
+          <div class="icon-box">
+            <img src="assets/image/medal.png" alt="Leaderboard">
+          </div>
+          <h3>Global Ranks</h3>
+          <p>Compete with players worldwide. Climb the ranks and become a legend.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA SECTION -->
+  <section id="media" class="section media-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">In <span class="highlight">Action</span></h2>
+      </div>
+
+      <div class="media-grid">
+        <img src="assets/image/logo.png" alt="Logo">
+        <p>© 2025 CoreBit Studio. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="privacy-link">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#" id="contact-link">Contact</a>
+        <a href="#" id="disclaimer-link">Disclaimer</a>
+      </div>
+    </div>
+    </footer>
+
+    <!-- MODALS -->
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard-modal" class="modal-overlay hidden">
+      <div class="modal-content glass">
+        <button class="close-modal">&times;</button>
+        <h2 class="section-title">Global <span class="highlight">Rankings</span></h2>
+        <div class="modal-body" id="full-leaderboard-list">
+          <!-- Content injected by JS -->
+          <div class="lb-loading">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal-overlay hidden">
+      <div class="modal-content glass">
+        <button class="close-modal">&times;</button>
+        <h2 class="section-title">Privacy <span class="highlight">Policy</span></h2>
+        <div class="modal-body text-content">
+          <p><strong>Effective Date:</strong> January 1, 2025</p>
+          <p>At AngryBolly, we respect your privacy. This game collects minimal data to improve your experience.</p>
+          <h3>1. Data Collection</h3>
+          <p>We use PlayFab for leaderboard services. We may collect your display name and score.</p>
+          <h3>2. Usage</h3>
+          <p>Your data is used solely for game functionality (leaderboards, authentication).</p>
+          <h3>3. Contact</h3>
+          <p>If you have questions, please contact us via the Contact form.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay hidden">
+      <div class="modal-content glass">
+        <button class="close-modal">&times;</button>
+        <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
+        <div class="modal-body text-content">
+          <p>Have feedback or found a bug? Reach out to us!</p>
+          <p><strong>Email:</strong> support@angrybolly.com</p>
+          <p><strong>Twitter:</strong> @AngryBollyGame</p>
+          <p><strong>Discord:</strong> Join our community server.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div id="disclaimer-modal" class="modal-overlay hidden">
+      <div class="modal-content glass">
+        <button class="close-modal">&times;</button>
+        <h2 class="section-title">Disclaimer</h2>
+        <div class="modal-body text-content">
+          <p>All characters, names, and sounds used in this game are for entertainment and parody purposes only.</p>
+          <p>We do not intend to hurt the sentiments of any individual, community, or organization. This is a work of
+            fiction and fun.</p>
+          <p>Please enjoy the chaos responsibly!</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{
+    "reviews": [
+        {
+            "id": "sample-review-1",
+            "name": "Rahul Sharma",
+            "email": "rahul@example.com",
+            "rating": 5,
+            "review": "Absolutely amazing game! The Bollywood theme is hilarious and the gameplay is super addictive. Love the flying chappals!",
+            "deviceId": "sample-device-1",
+            "ip": "hashed-ip-1",
+            "timestamp": "2025-01-20T10:30:00Z",
+            "approved": true
+        },
+        {
+            "id": "sample-review-2",
+            "name": "Priya Patel",
+            "email": "priya@example.com",
+            "rating": 4,
+            "review": "Great concept and fun to play! Graphics could be better but overall a solid game. Recommended!",
+            "deviceId": "sample-device-2",
+            "ip": "hashed-ip-2",
+            "timestamp": "2025-01-22T14:15:00Z",
+            "approved": true
+        },
+        {
+            "id": "sample-review-3",
+            "name": "Amit Kumar",
+            "email": "amit@example.com",
+            "rating": 5,
+            "review": "Best endless runner I've played! The power-ups are creative and the bosses are challenging. 10/10!",
+            "deviceId": "sample-device-3",
+            "ip": "hashed-ip-3",
+            "timestamp": "2025-01-25T16:45:00Z",
+            "approved": true
+        }
+    ]
+}

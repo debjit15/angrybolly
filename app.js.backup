@@ -1,0 +1,240 @@
+/* app.js - AngryBolly Logic */
+
+// PlayFab Configuration
+const PLAYFAB_TITLE_ID = "16EA52";
+const LEADERBOARD_STATISTIC = "HighScore";
+
+// Initialize PlayFab
+function initPlayFab() {
+    if (typeof PlayFab !== 'undefined') {
+        PlayFab.settings.titleId = PLAYFAB_TITLE_ID;
+        loginPlayFabClient();
+    } else {
+        console.error("PlayFab SDK not loaded");
+    }
+}
+
+// Login to PlayFab (Client Side)
+function loginPlayFabClient() {
+    const loginRequest = {
+        TitleId: PLAYFAB_TITLE_ID,
+        CustomId: "WebUser_" + Math.floor(Math.random() * 999999),
+        CreateAccount: true
+    };
+
+    PlayFabClientSDK.LoginWithCustomID(loginRequest, (result, error) => {
+        if (result) {
+            console.log("PlayFab Login Success");
+            fetchLeaderboard();
+        } else {
+            console.error("PlayFab Login Failed:", error);
+            document.getElementById('leaderboard-list').innerHTML = '<div class="lb-error">Login failed. Unable to fetch scores.</div>';
+        }
+    });
+}
+
+// Fetch Leaderboard Data
+function fetchLeaderboard() {
+    const request = {
+        StartPosition: 0,
+        MaxResultsCount: 10,
+        StatisticName: LEADERBOARD_STATISTIC
+    };
+
+    PlayFabClientSDK.GetLeaderboard(request, (result, error) => {
+        if (result) {
+            renderLeaderboard(result.data.Leaderboard);
+        } else if (error) {
+            console.error("PlayFab Leaderboard Error:", error);
+            document.getElementById('leaderboard-list').innerHTML = '<div class="lb-error">Failed to load leaderboard.</div>';
+
+            const frames = [
+                'assets/herosprite/fly1.png',
+                'assets/herosprite/fly2.png',
+                'assets/herosprite/fly3.png',
+                'assets/herosprite/fly4.png'
+            ];
+            let currentFrame = 0;
+
+            setInterval(() => {
+                currentFrame = (currentFrame + 1) % frames.length;
+                heroImg.src = frames[currentFrame];
+            }, 150); // Adjust speed as needed (150ms = ~6.6fps)
+        }
+
+        // Render Leaderboard UI
+        function renderLeaderboard(data) {
+            const defaultAvatar = 'assets/image/default_avatar.png'; // Generated avatar path
+
+            if (!data || data.length === 0) {
+                document.getElementById('leaderboard-list').innerHTML = '<div class="lb-empty">No scores yet. Be the first!</div>';
+                return;
+            }
+
+            // Top 1 Champion Badge
+            const top1 = data[0];
+            if (top1) {
+                document.getElementById('champ-name').textContent = top1.DisplayName || top1.PlayFabId || "Anonymous";
+                document.getElementById('champion-badge').classList.remove('hidden');
+
+                // Podium Rank 1
+                document.getElementById('p1name').textContent = top1.DisplayName || top1.PlayFabId || "Anonymous";
+                document.getElementById('p1score').textContent = top1.StatValue;
+                // Update avatar if element exists (you might need to add img tags to podium HTML)
+            }
+
+            // Podium Rank 2
+            const top2 = data[1];
+            if (top2) {
+                document.getElementById('p2name').textContent = top2.DisplayName || top2.PlayFabId || "Anonymous";
+                document.getElementById('p2score').textContent = top2.StatValue;
+            }
+
+            // Podium Rank 3
+            const top3 = data[2];
+            if (top3) {
+                document.getElementById('p3name').textContent = top3.DisplayName || top3.PlayFabId || "Anonymous";
+                document.getElementById('p3score').textContent = top3.StatValue;
+            }
+
+            // List (Rank 4+)
+            const listContainer = document.getElementById('leaderboard-list');
+            listContainer.innerHTML = ''; // Clear loading
+
+            if (data.length > 3) {
+                for (let i = 3; i < data.length; i++) {
+                    const player = data[i];
+                    const item = document.createElement('div');
+                    item.className = 'lb-item fade-in-up';
+                    item.style.animationDelay = `${(i - 3) * 0.1}s`;
+
+                    item.innerHTML = `
+                <div class="rank">${player.Position + 1}</div>
+                <img src="${defaultAvatar}" alt="Avatar" class="lb-avatar">
+                <div class="player-info">
+                    <span class="p-name">${player.DisplayName || player.PlayFabId || "Anonymous"}</span>
+                </div>
+                <div class="score">${player.StatValue}</div>
+            `;
+                    listContainer.appendChild(item);
+                }
+            } else {
+                if (data.length <= 3) {
+                    listContainer.innerHTML = '<div class="lb-empty">Join the game to be on the list!</div>';
+                }
+            }
+        }
+
+        /* ---------- Modal Logic ---------- */
+        const modals = {
+            leaderboard: document.getElementById('leaderboard-modal'),
+            privacy: document.getElementById('privacy-modal'),
+            contact: document.getElementById('contact-modal'),
+            disclaimer: document.getElementById('disclaimer-modal')
+        };
+
+        const triggers = {
+            leaderboard: document.getElementById('loadMoreBtn'),
+            privacy: document.getElementById('privacy-link'),
+            contact: document.getElementById('contact-link'),
+            disclaimer: document.getElementById('disclaimer-link')
+        };
+
+        const closeButtons = document.querySelectorAll('.close-modal');
+
+        // Open Modal Function
+        function openModal(modalId) {
+            const modal = modals[modalId];
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+                if (modalId === 'leaderboard') {
+                    loadFullLeaderboard();
+                }
+            }
+        }
+
+        // Close Modal Function
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners for Triggers
+        if (triggers.leaderboard) triggers.leaderboard.addEventListener('click', () => openModal('leaderboard'));
+        if (triggers.privacy) triggers.privacy.addEventListener('click', (e) => { e.preventDefault(); openModal('privacy'); });
+        if (triggers.contact) triggers.contact.addEventListener('click', (e) => { e.preventDefault(); openModal('contact'); });
+        if (triggers.disclaimer) triggers.disclaimer.addEventListener('click', (e) => { e.preventDefault(); openModal('disclaimer'); });
+
+        // Event Listeners for Close Buttons
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal-overlay');
+                closeModal(modal);
+            });
+        });
+
+        // Close on Click Outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeModal(e.target);
+            }
+        });
+
+        // Load Full Leaderboard (Mock/Real Logic)
+        function loadFullLeaderboard() {
+            const container = document.getElementById('full-leaderboard-list');
+            container.innerHTML = '<div class="lb-loading">Fetching global rankings...</div>';
+
+            // Reuse PlayFab logic if available, or just show top 100
+            // For now, we'll fetch the same leaderboard but ask for more results
+            const request = {
+                StartPosition: 0,
+                MaxResultsCount: 50, // Fetch more
+                StatisticName: LEADERBOARD_STATISTIC
+            };
+
+            if (typeof PlayFabClientSDK !== 'undefined') {
+                PlayFabClientSDK.GetLeaderboard(request, (result, error) => {
+                    if (result) {
+                        renderFullLeaderboard(result.data.Leaderboard);
+                    } else {
+                        container.innerHTML = '<div class="lb-error">Failed to load rankings.</div>';
+                    }
+                });
+            } else {
+                container.innerHTML = '<div class="lb-error">PlayFab not initialized.</div>';
+            }
+        }
+
+        function renderFullLeaderboard(data) {
+            const container = document.getElementById('full-leaderboard-list');
+            container.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                container.innerHTML = '<div class="lb-empty">No players found.</div>';
+                return;
+            }
+
+            data.forEach((player, index) => {
+                const item = document.createElement('div');
+                item.className = 'lb-item';
+                // Add special styling for top 3 if needed, or just list them
+                let rankClass = '';
+                if (index === 0) rankClass = 'rank-1';
+                if (index === 1) rankClass = 'rank-2';
+                if (index === 2) rankClass = 'rank-3';
+
+                if (rankClass) item.classList.add(rankClass);
+
+                item.innerHTML = `
+            <div class="rank">${player.Position + 1}</div>
+            <div class="player-info">
+                <span class="p-name">${player.DisplayName || player.PlayFabId || "Anonymous"}</span>
+            </div>
+            <div class="score">${player.StatValue}</div>
+        `;
+                container.appendChild(item);
+            });
+        }

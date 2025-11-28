@@ -1,12 +1,21 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>angryBolly — Play Now</title>
-  <meta name="description" content="angryBolly — Meme-world endless runner with power-ups, bosses and Bollywood-style chaos." />
-  <meta name="theme-color" content="#00eaff" />
+  <title>angryBolly — The Chaotic Bollywood Runner</title>
+  <meta name="description"
+    content="angryBolly — Meme-world endless runner with power-ups, bosses and Bollywood-style chaos." />
+  <meta name="theme-color" content="#6366f1" />
   <link rel="icon" href="assets/image/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -14,201 +23,356 @@
   <!-- PlayFab Client SDK -->
   <script src="https://download.playfab.com/PlayFabClientApi.js" defer></script>
 </head>
-<body>
-  <div class="wrapper">
 
-    <!-- HEADER -->
-    <header class="topbar">
-      <div class="brand">
-        <img src="assets/image/logo.png" alt="angryBolly logo" class="brand-icon">
-        <div class="brand-text">
-          <div class="brand-title">angryBolly</div>
-          <div class="brand-sub">CoreBit Studio • Action Game</div>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img src="assets/image/logo.png" alt="angryBolly Logo" class="nav-logo">
+        <span class="nav-title">angry<span class="accent">Bolly</span></span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#media" class="nav-link">Media</a>
+        <a href="#leaderboard" class="nav-link">Leaderboard</a>
+        <a href="#download" class="btn-primary">Play Now</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge animate-fade-in">🎮 v1.0.3 Live Now</div>
+        <h1 class="hero-title animate-fade-in-up">
+          Run. Dodge.<br>
+          <span class="gradient-text">Create Chaos.</span>
+        </h1>
+        <p class="hero-desc animate-fade-in-up">
+          Dive into the most chaotic Bollywood-style endless runner.
+          Wormholes, flying chappals, and meme bosses await.
+        </p>
+
+        <div class="hero-cta animate-fade-in-up">
+          <a href="assets/instantplay/angrybolly.html" class="btn-primary btn-large">
+            Play Now <span class="arrow">→</span>
+          </a>
+          <a href="#media" class="btn-secondary btn-large">Watch Trailer</a>
+        </div>
+
+        <div class="hero-stats animate-fade-in-up">
+          <div class="stat-item">
+            <span class="stat-num" id="stat-downloads">1M+</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-rating">4.7★</span>
+            <span class="stat-label">Rating</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-reviews">12K</span>
+            <span class="stat-label">Reviews</span>
+          </div>
         </div>
       </div>
 
-      <nav class="topnav">
-        <a href="#description">About</a>
-        <a href="#features">Features</a>
-        <a href="#leaderboard">Leaderboard</a>
-        <a href="#downloads">Get The Game</a>
-      </nav>
-    </header>
-
-    <!-- MAIN LAYOUT -->
-    <main class="container">
-
-      <!-- LEFT COLUMN -->
-      <section class="main-col">
-
-        <!-- FEATURE GRAPHIC + APP META -->
-        <article class="app-hero card">
-
-          <div class="feature-graphic">
-            <!-- Your generated feature graphic -->
-            <img src="assets/image/feture.png" alt="Feature Graphic">
-          </div>
-
-          <div class="app-meta">
-            <img src="assets/image/logo.png" alt="icon" class="app-icon">
-
-            <div class="meta-text">
-              <h1 class="app-title">angryBolly</h1>
-              <div class="app-sub">Bollywood-style endless runner filled with memes, bosses, wormholes & chaos.</div>
-
-              <div class="meta-row">
-                <div class="rating-pill">4.7 ★</div>
-                <div class="meta-muted">12K reviews</div>
-                <div class="meta-muted">•</div>
-                <div class="meta-muted">1M+ downloads</div>
-              </div>
-
-              <div class="cta-row">
-                <a id="playNow" class="btn primary" href="assets/instantplay/angrybolly.html">Play</a>
-                <a class="btn ghost" href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing">APK</a>
-                <a class="btn ghost" href="https://drive.google.com/file/d/1ThhHmWLPD1Rta6ln7rQukR0LTBQ6HEKg/view?usp=sharing">Windows</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- MEDIA: Screenshots + Video -->
-        <article class="media card">
-
-          <!-- Horizontal Screenshot Strip -->
-          <div class="screens-row landscape">
-            <img class="shot" src="assets/screens/s1.jpg" alt="">
-            <img class="shot" src="assets/screens/s2.jpg" alt="">
-            <img class="shot" src="assets/screens/s3.jpg" alt="">
-            <img class="shot" src="assets/screens/s4.jpg" alt="">
-          </div>
-
-          <div class="video-block">
-            <iframe src="https://www.youtube.com/embed/YBh2HDHSyAI" allowfullscreen></iframe>
-          </div>
-        </article>
-
-        <!-- DESCRIPTION -->
-        <article id="description" class="card description-card">
-          <h2>About This Game</h2>
-
-          <p class="lead">
-            angryBolly is a high-speed meme-packed Bollywood runner where every second is chaos: wormholes, traps, bosses, and power-ups.
-          </p>
-
-          <div class="text-muted">
-            Speed boosts, shields, magnets, blackholes, and meme obstacles create never-ending fun.
-          </div>
-
-          <div id="longDesc" class="text-muted long" hidden>
-            <p><strong>Controls:</strong> Tap to jump • Double tap to double-jump • Swipe down to slide.</p>
-            <p><strong>Powered By:</strong> CoreBit Studio • Godot Engine.</p>
-            <p><strong>Patch:</strong> Performance increased • Bugs fixed • New boss stage.</p>
-          </div>
-
-          <button id="toggleDesc" class="link-btn">Read more ▾</button>
-        </article>
-
-        <!-- FEATURES -->
-        <article id="features" class="card">
-          <h3>Key Features</h3>
-
-          <div class="features-grid">
-            <div class="feature">
-              <img src="assets/image/magnet.png">
-              <div class="f-text">
-                <strong>Magnet Power</strong>
-                <div class="muted small">Collect coins automatically</div>
-              </div>
-            </div>
-
-            <div class="feature">
-              <img src="assets/image/pause-button.png">
-              <div class="f-text">
-                <strong>Time Trials</strong>
-                <div class="muted small">Daily speed challenges</div>
-              </div>
-            </div>
-
-            <div class="feature">
-              <img src="assets/image/medal.png">
-              <div class="f-text">
-                <strong>Global Leaderboards</strong>
-                <div class="muted small">Compete worldwide</div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </section>
-
-      <!-- RIGHT COLUMN -->
-      <aside class="side-col">
-
-        <!-- LEADERBOARD -->
-        <div id="leaderboard" class="card leaderboard-card">
-  <h4 class="section-title">Leaderboard — Top Players</h4>
-
-  <!-- 1st -->
-  <div class="leader professional">
-    <div class="rank-badge gold">1</div>
-    <div class="info">
-      <div id="p1name" class="name">PlayerOne</div>
-      <div class="muted small">Top Performer</div>
+      <div class="hero-visual animate-fade-in">
+        <div class="hero-circle"></div>
+        <div class="sprite-container" id="spriteContainer">
+          <img src="assets/herosprite/fly4.png" alt="Angry Bolly Character" class="hero-img" id="spriteImage">
+        </div>
+        <div class="float-badge badge-1">
+          <img src="assets/image/magnet.png" alt="Magnet">
+          <span>Magnet ON</span>
+        </div>
+        <div class="float-badge badge-2">
+          <img src="assets/image/medal.png" alt="Medal">
+          <span>Top #1</span>
+        </div>
+      </div>
     </div>
-    <div id="p1score" class="score">0</div>
-  </div>
+  </section>
 
-  <!-- 2nd -->
-  <div class="leader professional">
-    <div class="rank-badge silver">2</div>
-    <div class="info">
-      <div id="p2name" class="name">ShadowBoss</div>
-      <div class="muted small">Competitive Runner</div>
+  <!-- FEATURES SECTION -->
+  <section id="features" class="section features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Game <span class="accent">Features</span></h2>
+        <p class="section-subtitle">Why players can't stop running</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">
+            <img src="assets/image/magnet.png" alt="Powerups">
+          </div>
+          <h3>Insane Powerups</h3>
+          <p>Magnets, Shields, and Blackholes. Collect them all to survive the chaos.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">
+            <img src="assets/image/pause-button.png" alt="Time Trials">
+          </div>
+          <h3>Time Trials</h3>
+          <p>Race against the clock in daily speed challenges. Be the fastest.</p>
+        </div>
+
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">
+            <img src="assets/image/medal.png" alt="Leaderboard">
+          </div>
+          <h3>Global Ranks</h3>
+          <p>Compete with players worldwide. Climb the ranks and become a legend.</p>
+        </div>
+      </div>
     </div>
-    <div id="p2score" class="score">0</div>
-  </div>
+  </section>
 
-  <!-- 3rd -->
-  <div class="leader professional">
-    <div class="rank-badge bronze">3</div>
-    <div class="info">
-      <div id="p3name" class="name">NinjaRun</div>
-      <div class="muted small">Fast & Skilled</div>
+  <!-- MEDIA SECTION -->
+  <section id="media" class="section media-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">In <span class="accent">Action</span></h2>
+      </div>
+
+      <div class="media-grid">
+        <div class="video-wrapper scroll-reveal">
+          <iframe src="https://www.youtube.com/embed/YBh2HDHSyAI?si=48hTymc7Bi5paw17" title="Gameplay Trailer"
+            allowfullscreen></iframe>
+        </div>
+
+        <div class="screenshots-grid">
+          <img src="assets/screens/s1.jpg" alt="Screenshot 1" class="screenshot scroll-reveal">
+          <img src="assets/screens/s2.jpg" alt="Screenshot 2" class="screenshot scroll-reveal">
+          <img src="assets/screens/s3.jpg" alt="Screenshot 3" class="screenshot scroll-reveal">
+          <img src="assets/screens/s4.jpg" alt="Screenshot 4" class="screenshot scroll-reveal">
+        </div>
+      </div>
     </div>
-    <div id="p3score" class="score">0</div>
-  </div>
-</div>
+  </section>
 
+  <!-- LEADERBOARD SECTION -->
+  <section id="leaderboard" class="section leaderboard-section">
+    <div class="container">
+      <div class="leaderboard-card">
+        <div class="section-header">
+          <h2 class="section-title">Hall of <span class="accent">Fame</span></h2>
+          <p class="section-subtitle">Top players this week</p>
+        </div>
 
-        <!-- DOWNLOADS -->
-        <div id="downloads" class="card downloads-card">
-          <h4>Get The Game</h4>
+        <div id="podium" class="podium">
+          <!-- Rank 2 -->
+          <div class="podium-item rank-2 scroll-reveal">
+            <div class="podium-rank">2</div>
+            <div class="podium-avatar">🥈</div>
+            <div class="podium-info">
+              <span class="p-name" id="p2name">Loading...</span>
+              <span class="score" id="p2score">-</span>
+            </div>
+            <div class="podium-base"></div>
+          </div>
 
-          <div class="download-list">
-            <a class="download-item" href="assets/instantplay/angrybolly.html">Play Web</a>
-            <a class="download-item" href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing">APK</a>
-            <a class="download-item" href="https://drive.google.com/file/d/1ThhHmWLPD1Rta6ln7rQukR0LTBQ6HEKg/view?usp=sharing">Windows</a>
+          <!-- Rank 1 -->
+          <div class="podium-item rank-1 scroll-reveal">
+            <div class="crown">👑</div>
+            <div class="podium-rank">1</div>
+            <div class="podium-avatar">🥇</div>
+            <div class="podium-info">
+              <span class="p-name" id="p1name">Loading...</span>
+              <span class="score" id="p1score">-</span>
+            </div>
+            <div class="podium-base"></div>
+          </div>
+
+          <!-- Rank 3 -->
+          <div class="podium-item rank-3 scroll-reveal">
+            <div class="podium-rank">3</div>
+            <div class="podium-avatar">🥉</div>
+            <div class="podium-info">
+              <span class="p-name" id="p3name">Loading...</span>
+              <span class="score" id="p3score">-</span>
+            </div>
+            <div class="podium-base"></div>
           </div>
         </div>
 
-        <div class="card quick card-stats">
-          <div class="muted small">Version</div>
-          <div class="version">v1.0.3</div>
-          <div class="muted small">Updated: 21 Nov 2025</div>
+        <div id="leaderboard-list" class="lb-list">
+          <div class="lb-loading">Loading more players...</div>
         </div>
 
-      </aside>
-    </main>
+        <div class="lb-actions">
+          <button id="loadMoreBtn" class="btn-secondary">View More</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <div>© CoreBit Studio — angryBolly</div>
-      <div class="muted small">Built with Godot Engine</div>
-    </footer>
+  <!-- DOWNLOAD CTA -->
+  <section id="download" class="section download-section">
+    <div class="container">
+      <div class="download-card scroll-reveal">
+        <h2>Ready to join the chaos?</h2>
+        <p>Download now and start your endless run.</p>
+        <div class="download-buttons">
+          <a href="assets/instantplay/angrybolly.html" class="btn-primary btn-large">Play on Web</a>
+          <a href="https://drive.google.com/file/d/1TUdkk7byOiw2h6jsoiAbeGNgWHoo1Alz/view?usp=sharing"
+            class="btn-outline btn-large">Download APK</a>
+          <a href="https://drive.google.com/file/d/1ThhHmWLPD1Rta6ln7rQukR0LTBQ6HEKg/view?usp=sharing"
+            class="btn-outline btn-large">Download for PC</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- REVIEWS SECTION -->
+  <section id="reviews" class="section reviews-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Player <span class="accent">Reviews</span></h2>
+        <p class="section-subtitle">See what players are saying</p>
+      </div>
+      <div id="reviews-container" class="reviews-grid">
+        <div class="reviews-loading">Loading reviews...</div>
+      </div>
+      <div class="reviews-actions">
+        <button id="writeReviewBtn" class="btn-primary btn-large">Write a Review</button>
+        <button id="loadMoreReviewsBtn" class="btn-secondary" style="display: none;">Load More Reviews</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/image/logo.png" alt="Logo">
+          <p>© 2025 CoreBit Studio. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#" id="privacy-link">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#" id="contact-link">Contact</a>
+          <a href="#" id="disclaimer-link">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboard-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="section-title">Global <span class="accent">Rankings</span></h2>
+      <div class="modal-body" id="full-leaderboard-list">
+        <div class="lb-loading">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacy-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="section-title">Privacy <span class="accent">Policy</span></h2>
+      <div class="modal-body">
+        <p><strong>Effective Date:</strong> January 1, 2025</p>
+        <p>At AngryBolly, we respect your privacy. This game collects minimal data to improve your experience.</p>
+        <h3>1. Data Collection</h3>
+        <p>We use PlayFab for leaderboard services. We may collect your display name and score.</p>
+        <h3>2. Usage</h3>
+        <p>Your data is used solely for game functionality (leaderboards, authentication).</p>
+        <h3>3. Contact</h3>
+        <p>If you have questions, please contact us via the Contact form.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+      <div class="modal-body">
+        <p>Have feedback or found a bug? Reach out to us!</p>
+        <p><strong>Email:</strong> support@angrybolly.com</p>
+        <p><strong>Twitter:</strong> @AngryBollyGame</p>
+        <p><strong>Discord:</strong> Join our community server.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer Modal -->
+  <div id="disclaimer-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="section-title">Disclaimer</h2>
+      <div class="modal-body">
+        <p>All characters, names, and sounds used in this game are for entertainment and parody purposes only.</p>
+        <p>We do not intend to hurt the sentiments of any individual, community, or organization. This is a work of
+          fiction and fun.</p>
+        <p>Please enjoy the chaos responsibly!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Form Modal -->
+  <div id="review-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="section-title">Write a <span class="accent">Review</span></h2>
+
+      <form id="reviewForm" class="review-form">
+        <div class="form-group">
+          <label for="reviewName">Your Name *</label>
+          <input type="text" id="reviewName" name="name" required minlength="2" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="reviewEmail">Email *</label>
+          <input type="email" id="reviewEmail" name="email" required placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Rating *</label>
+          <div class="star-rating" id="starRating">
+            <span class="star" data-rating="1">★</span>
+            <span class="star" data-rating="2">★</span>
+            <span class="star" data-rating="3">★</span>
+            <span class="star" data-rating="4">★</span>
+            <span class="star" data-rating="5">★</span>
+          </div>
+          <input type="hidden" id="reviewRating" name="rating" value="0" required>
+        </div>
+        <div class="form-group">
+          <label for="reviewText">Your Review *</label>
+          <textarea id="reviewText" name="review" required minlength="10" maxlength="500" rows="4"
+            placeholder="Share your thoughts about the game (10-500 characters)"></textarea>
+          <span class="char-count">0/500</span>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary btn-large">Submit Review</button>
+        </div>
+        <div id="reviewFormMessage" class="form-message"></div>
+      </form>
+    </div>
   </div>
 
   <script src="app.js"></script>
 </body>
-</html>
 
+</html>
